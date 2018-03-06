@@ -29,9 +29,27 @@ int main(int argc, char* argv[]) {
 
 			if (event.type == SDL_KEYDOWN) {
 				switch (event.key.keysym.sym) {
+				
+				case SDLK_UP:
+					rect.y -= 10;
+					break;
+
+				case SDLK_DOWN:
+					rect.y += 10;
+					break;
+
+				case SDLK_RIGHT:
+					rect.x += 10;
+					break;
+
+				case SDLK_LEFT:
+					rect.x -= 10;
+					break;
+
 				case SDLK_SPACE:
 					bullet.x = rect.x + 150;
 					bullet.y = rect.y + rect.h / 2 - bullet.h /2;
+					break;
 				}
 			}
 
