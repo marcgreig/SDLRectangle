@@ -25,6 +25,41 @@ int main(int argc, char* argv[]) {
 			if (event.type == SDL_QUIT) {
 				isRunning = false;
 			}
+			/*const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+			
+			if (keystates[SDLK_UP]) {
+				if (rect.y > 0) {
+					rect.y -= 10;
+				}
+				break;
+			}
+
+			if (keystates[SDLK_DOWN]) {
+				if (rect.y + rect.h < 800) {
+					rect.y += 10;
+				}
+				break;
+			}
+
+			if (keystates[SDLK_RIGHT]) {
+				if (rect.x + rect.w < 1200) {
+					rect.x += 10;
+				}
+				break;
+			}
+
+			if (keystates[SDLK_LEFT]) {
+				if (rect.x > 0) {
+					rect.x -= 10;
+				}
+				break;
+			}
+
+			if (keystates[SDLK_SPACE]) {
+				bullet.x = rect.x + 150;
+				bullet.y = rect.y + rect.h / 2 - bullet.h / 2;
+				break;
+			}*/
 
 			if (event.type == SDL_KEYDOWN) {
 				switch (event.key.keysym.sym) {
@@ -59,10 +94,8 @@ int main(int argc, char* argv[]) {
 					break;
 				}
 			}
-
 		}
-
-
+		
 		if (bullet.x < 1200) {
 			bullet.x += 1;
 		}
