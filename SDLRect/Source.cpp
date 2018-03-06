@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 	
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 	
-	SDL_Rect rect = { 550, 350, 200, 150 };
+	SDL_Rect rect = { 550, 350, 150, 100 };
 
 	bool isRunning = true;
 	SDL_Event event;
@@ -21,6 +21,8 @@ int main(int argc, char* argv[]) {
 			if (event.type == SDL_QUIT) {
 				isRunning = false;
 			}
+
+
 		}
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
