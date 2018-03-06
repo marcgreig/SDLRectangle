@@ -11,8 +11,18 @@ int main(int argc, char* argv[]) {
 	
 	SDL_Rect rect = { 550, 350, 200, 150 };
 
-	while (1) {
-		
+	bool isRunning = true;
+	SDL_Event event;
+
+	while (isRunning) {
+
+		while (SDL_PollEvent(&event)) {
+
+			if (event.type == SDL_QUIT) {
+				isRunning = false;
+			}
+		}
+
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 		SDL_RenderClear(renderer);
 
