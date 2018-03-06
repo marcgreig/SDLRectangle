@@ -15,7 +15,6 @@ int main(int argc, char* argv[]) {
 	bullet.w = 15;
 	bullet.h = 10;
 
-
 	bool isRunning = true;
 	SDL_Event event;
 
@@ -31,19 +30,27 @@ int main(int argc, char* argv[]) {
 				switch (event.key.keysym.sym) {
 				
 				case SDLK_UP:
-					rect.y -= 10;
+					if (rect.y > 0) {
+						rect.y -= 10;
+					}
 					break;
 
 				case SDLK_DOWN:
-					rect.y += 10;
+					if (rect.y + rect.h < 800) {
+						rect.y += 10;
+					}
 					break;
 
 				case SDLK_RIGHT:
-					rect.x += 10;
+					if (rect.x +rect.w < 1200) {
+						rect.x += 10;
+					}
 					break;
 
 				case SDLK_LEFT:
-					rect.x -= 10;
+					if (rect.x > 0) {
+						rect.x -= 10;
+					}
 					break;
 
 				case SDLK_SPACE:
@@ -54,6 +61,8 @@ int main(int argc, char* argv[]) {
 			}
 
 		}
+
+
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 		SDL_RenderClear(renderer);
