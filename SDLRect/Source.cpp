@@ -10,6 +10,11 @@ int main(int argc, char* argv[]) {
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 	
 	SDL_Rect rect = { 550, 350, 150, 100 };
+	
+	SDL_Rect bullet;
+	bullet.w = 15;
+	bullet.h = 10;
+
 
 	bool isRunning = true;
 	SDL_Event event;
@@ -22,6 +27,13 @@ int main(int argc, char* argv[]) {
 				isRunning = false;
 			}
 
+			if (event.type == SDL_KEYDOWN) {
+				switch (event.key.keysym.sym) {
+				case SDLK_SPACE:
+					bullet.x = rect.x + 150;
+					bullet.y = rect.y + rect.h / 2 - bullet.h /2;
+				}
+			}
 
 		}
 
@@ -30,6 +42,9 @@ int main(int argc, char* argv[]) {
 
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 		SDL_RenderFillRect(renderer, &rect);
+
+		SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+		SDL_RenderFillRect(renderer, &bullet);
 
 		SDL_RenderPresent(renderer);
 	}
