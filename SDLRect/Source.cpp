@@ -63,6 +63,9 @@ int main(int argc, char* argv[]) {
 		}
 
 
+		if (bullet.x < 1200) {
+			bullet.x += 1;
+		}
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 		SDL_RenderClear(renderer);
