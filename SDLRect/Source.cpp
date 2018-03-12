@@ -15,9 +15,11 @@ int main(int argc, char* argv[]) {
 	bullet.w = 15;
 	bullet.h = 10;
 
+	bool up, down, right, left = false;
+
 	bool isRunning = true;
 	SDL_Event event;
-
+	
 	while (isRunning) {
 
 		while (SDL_PollEvent(&event)) {
@@ -65,34 +67,68 @@ int main(int argc, char* argv[]) {
 				switch (event.key.keysym.sym) {
 				
 				case SDLK_UP:
-					if (rect.y > 0) {
-						rect.y -= 10;
-					}
+					up = true;
 					break;
-
+					
 				case SDLK_DOWN:
-					if (rect.y + rect.h < 800) {
-						rect.y += 10;
-					}
+					down = true;
 					break;
 
 				case SDLK_RIGHT:
-					if (rect.x +rect.w < 1200) {
-						rect.x += 10;
-					}
+					right = true;
 					break;
-
+			
 				case SDLK_LEFT:
-					if (rect.x > 0) {
-						rect.x -= 10;
-					}
+					left = true;
 					break;
-
+					
 				case SDLK_SPACE:
 					bullet.x = rect.x + 150;
 					bullet.y = rect.y + rect.h / 2 - bullet.h /2;
 					break;
 				}
+			}
+
+			if (event.type == SDL_KEYUP) {
+				switch (event.key.keysym.sym) {
+
+				case SDLK_UP:
+					up = false;
+					break;
+					
+				case SDLK_DOWN:
+					down = false;
+					break;
+
+				case SDLK_RIGHT:
+					right = false;
+					break;
+					
+				case SDLK_LEFT:
+					left = false;
+					break;
+				}
+			}
+		}
+
+		if (up = true) {
+			if (rect.y > 0) {
+				rect.y -= 10;
+			}
+		}
+		if (down = true) {
+			if (rect.y + rect.h < 800) {
+				rect.y += 10;
+			}
+		}
+		if (right = true) {
+			if (rect.x + rect.w < 1200) {
+				rect.x += 10;
+			}
+		}
+		if (left = true) {
+			if (rect.x > 0) {
+				rect.x -= 10;
 			}
 		}
 		
