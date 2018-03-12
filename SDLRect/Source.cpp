@@ -1,9 +1,12 @@
 #include "SDL/include/SDL.h"
+#include "SDL_Image/include/SDL_image.h"
 #pragma comment (lib, "SDL/libx86/SDL2.lib")
 #pragma comment (lib, "SDL/libx86/SDL2main.lib")
+#pragma comment (lib, "SDL_Image/libx86/SDL2_image.lib")
 
 int main(int argc, char* argv[]) {
 	SDL_Init(SDL_INIT_VIDEO);
+	IMG_Init;
 
 	SDL_Window* window = SDL_CreateWindow("window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 800, 0);
 	
@@ -136,7 +139,7 @@ int main(int argc, char* argv[]) {
 		}
 		
 		if (bullet.x < 1200) {
-			bullet.x += 1;
+			bullet.x += 2;
 		}
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
@@ -153,6 +156,7 @@ int main(int argc, char* argv[]) {
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	IMG_Quit;
 	SDL_Quit();
 	return 0;
 }
